@@ -134,4 +134,43 @@ public class User {
 		return Current_Account_Balance;
 	}
 
-
+//Setter methods for variables  
+	public void setFname(String Fname) 
+	{
+		this.Fname = Fname; 
+	}
+public void setLname(String Lname) {
+		 this.Lname = Lname;
+	}
+	public void setAddress(String Address) {
+		 this.Address = Address;
+	}
+	public void setDOB(String DOB) {
+		 this.DOB = DOB;
+	}
+	public void setEmail(String Email) {
+		 this.Email = Email;
+	}
+	public void setUser_id(String User_id) {
+		 this.User_id = User_id;
+	}
+	public void setSIN_no(int SIN_no) {
+		 this.SIN_no = SIN_no;
+	}
+	public void setContact_no(int Contact_no) {
+		 this.Contact_no = Contact_no;
+	}
+	public void setSavings_Account(int Savings_Account) {
+		//System.out.println(getSavings_Account());
+		this.Savings_Account = Savings_Account;
+	}
+	public void setCurrent_Account(int Current_Account) {
+		 this.Current_Account = Current_Account;
+	}
+	public void setSaving_Account_Balance(int Saving_Account_Balance) {
+		 this.Saving_Account_Balance = Saving_Account_Balance;
+	}
+	public void setCurrent_Account_Balance(int Current_Account_Balance) {
+		 this.Current_Account_Balance = Current_Account_Balance;
+	}
+	
