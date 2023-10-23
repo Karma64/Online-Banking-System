@@ -95,3 +95,43 @@ public class User {
 		this.Current_Account_Balance=0;
 		//this.Saving_Account_Balance=0;
 	}
+
+//Getter methods for variables
+	public String getFname() {
+		return Fname;
+	}
+	public String getLname() {
+		return Lname;
+	}
+	public String getAddress() {
+		return Address;
+	}
+	public String getDOB() {
+		return DOB;
+	}
+	public String getEmail() {
+		return Email;
+	}
+	public String getUser_id() {
+		return User_id;
+	}
+	public long getSIN_no() {
+		return SIN_no;
+	}
+	public long getContact_no() {
+		return Contact_no;
+	}
+	public int getSavings_Account() {
+		return Savings_Account;
+	}
+	public int getCurrent_Account() {
+		return Current_Account;
+	}
+	public double getSaving_Account_Balance() {
+		return Saving_Account_Balance;
+	}
+	public double getCurrent_Account_Balance() {
+		return Current_Account_Balance;
+	}
+
+
