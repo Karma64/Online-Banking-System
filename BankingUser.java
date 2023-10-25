@@ -173,4 +173,114 @@ public void setLname(String Lname) {
 	public void setCurrent_Account_Balance(int Current_Account_Balance) {
 		 this.Current_Account_Balance = Current_Account_Balance;
 	}
+
+public void save() throws IOException
+	{
+		/**
+		 * Method will create a file (user_id) and will save the details of the user.
+		 */
+		File file = new File(String.valueOf(this.User_id)+".txt");
+		PrintWriter pw = new PrintWriter(file);
+		pw.println("User ID : "+String.valueOf(this.User_id));
+		pw.println("First Name : "+this.Fname);
+		pw.println("Last Name : "+this.Lname);
+		pw.println("Address : "+this.Address);
+		pw.println("DOB : "+this.DOB);
+		pw.println("Email : "+this.Email);
+		pw.println("Contact no : "+String.valueOf(this.Contact_no));
+		pw.println("Savings Account no : "+String.valueOf(this.Savings_Account));
+		pw.println("Current Account no : "+String.valueOf(this.Current_Account));
+		pw.println("Saving Account Balance : "+String.valueOf(this.Saving_Account_Balance));
+		pw.println("Current Account Balance : "+String.valueOf(this.Current_Account_Balance));
+		pw.println("SIN no : "+String.valueOf(this.SIN_no));
+		pw.close();
+	}
+	public void Update(String User_id,String OldValue, String NewValue, String startwith,String type) throws IOException 
+	{
+		/**
+		 * Methods is used to update the details of user in file
+		 * filecontents = store the user data which is fetched from file
+		 * newcontents = store the user data with the update value.
+		 * val = store the digits(oldvalue) which are found from string(like saving balance, current balance)
+		 * updatedvalue = store the newly changed value.
+		 * User_id = represent the unique user_id of user
+		 * Oldvalue = represents the old value (which we want to update)
+		 * newValue = represents the new value (which we want to update)
+		 * startwith = represents the string in which we want to update the data
+		 * type = represents which type of update method we need(like debit,credit,etc)
+		 *
+		 */
+		File file = new File(User_id);
+	      Scanner sc = new Scanner(file);
+	      String fileContents="";
+	      while(sc.hasNext())
+	      {
+	    	  fileContents = fileContents + sc.nextLine() +"\n";
+	      }
+	      String[] contentarr = fileContents.split("\n");
+	      String newcontents="",uvalue="",val="";
+	      int updatedValue=0;
+	      for(String str : contentarr)
+	      {
+	    	  if(str.startsWith(startwith))
+	    	  {
+	    		  if(type.equals("deposit"))
+	    		  {
+	    			  val = findDigitValue(str);
+	    			  updatedValue = Integer.parseInt(val) + Integer.parseInt(NewValue);
+	    			  uvalue = String.valueOf(updatedValue);
+	    		  }
+	    		  else if(type.equals("debit"))
+	    		  {
+	    			  val = findDigitValue(str);
+	    			  updatedValue = Integer.parseInt(val) - Integer.parseInt(NewValue);
+	    			  uvalue = String.valueOf(updatedValue);
+	    		  }
+	    		  else if(type.equals("mobile"))
+	    		  {
+	    			  val = findDigitValue(str);
+	    			  uvalue = NewValue;
+	    		  }
+	    		  else if(type.equals("sin"))
+	    		  {
+	    			  val = findDigitValue(str);
+	    			  uvalue = NewValue;
+	    		  }
+	    		  else
+	    		  {
+	    			  String[] arr = str.split("[:]", 0);
+	    			  val = arr[1];
+	    			  uvalue = NewValue;
+	    		  }
+	    		  str = str.replace(val,uvalue);
+	    		  newcontents = newcontents + str + "\n";
+	    	  }else {
+	    		  newcontents = newcontents + str + "\n";
+	    	  }
+	      }
+	      sc.close();
+	      file.delete();
+	      File newfile = new File(User_id);
+	      PrintWriter pw = new PrintWriter(newfile);
+	      pw.println(newcontents);
+	      pw.close();
+	}
+	
+	private String findDigitValue(String fileData) {
+		/**
+		 * Method will identify the digit in string and returns digit in a string format
+		 */
+		StringBuilder sb= new StringBuilder();
+		char[] arr = fileData.toCharArray();
+		for(char ch : arr)
+		{
+			if(Character.isDigit(ch))
+			{
+				sb.append(ch);
+			}
+		}
+		return sb.toString();
+	}
+}
+
 	
