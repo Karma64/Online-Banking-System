@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
  * 
  *
  */
-public class JavaProject extends User{
+public class BankingMain extends User{
 
 	/**
 	 * @param args
